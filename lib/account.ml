@@ -11,3 +11,10 @@ let get_accounts ?(timeout = 3.) ~client () =
   let uri = endpoint_to_uri ~base_url:client.base_url Accounts in
   Common.call ~caller:"get_accounts" ~timeout
     ~parser:Account_j.accounts_of_string uri
+
+let get_accounts2 ?(timeout = 3.) ~(client : Account_t.accounts Types2.ctx2) ()
+    =
+  let uri = endpoint_to_uri ~base_url:client.base_url Accounts in
+  client.call ~caller:"get_accounts" ~timeout
+    ~parser:Account_j.accounts_of_string uri
+[@@ocaml.warning "-unused-value-declaration"]
