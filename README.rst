@@ -3,6 +3,8 @@ ibkr-client-portal-ocaml
 
 .. |build| image:: https://github.com/rbjorklin/ibkr-client-portal-ocaml/actions/workflows/build.yaml/badge.svg
 
+|build|
+
 .. contents::
    :local:
 
@@ -12,7 +14,7 @@ Introduction
 This project provides a thin OCaml wrapper over `Interactive Brokers Client Portal API`_.
 
 Status
-======
+------
 
 This project is for personal learning and is currently a work-in-progress.
 
