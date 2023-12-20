@@ -1,0 +1,29 @@
+[
+  {
+    "execution_id": "00000a00.0000adbc.00.00",
+    "symbol": "IOT",
+    "supports_tax_opt": "1",
+    "side": "B",
+    "order_description": "Bot 255 @ 23.25 on IEX",
+    "trade_time": "20231019-19:56:01",
+    "trade_time_r": 1697745361000,
+    "size": 255.0,
+    "price": "23.25",
+    "order_ref": "bb_short-SHORT-CLOSE-BUY-IOT-ExitRule-2023_10_19",
+    "exchange": "IEX",
+    "net_amount": 5928.75,
+    "account": "DU9999999",
+    "accountCode": "DU9999999",
+    "company_name": "SAMSARA INC-CL A",
+    "contract_description_1": "IOT",
+    "sec_type": "STK",
+    "listing_exchange": "NYSE",
+    "conid": 532274461,
+    "conidEx": "532274461",
+    "clearing_id": "IB",
+    "clearing_name": "IB",
+    "liquidation_trade": "0",
+    "is_event_trading": "0",
+    "commission": "1.27"
+  }
+]

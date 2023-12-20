@@ -1,0 +1,42 @@
+type reauthenticate = {
+  message : string;
+}
+
+type serverInfo = {
+  ?serverName : string option;
+  ?serverVersion : string option;
+}
+
+type status = {
+  authenticated : bool;
+  competing : bool;
+  connected : bool;
+  ?message <doc text="missing before successful auth"> : string option; 
+  mac <json name="MAC"> : string ;
+  ?serverInfo <doc text="missing before successful auth"> : serverInfo option ; 
+}
+
+type validate = {
+    loginType : int;
+    user_id <json name="USER_ID"> : int;
+    user_name <json name="USER_NAME"> : string;
+    auth_time <json name="AUTH_TIME"> : int;
+    expires <doc text="When {{expires}} is greater than {{600_000}} you have been logged out and should reauthenticate"> <json name="EXPIRES"> : int; 
+    result <json name="RESULT"> : bool;
+}
+
+type iserver = {
+    authStatus : status;
+}
+
+type tickle = {
+  session : string;
+  ssoExpires : int;
+  collission : bool;
+  userId : int;
+  iserver : iserver;
+}
+
+type logout = {
+  status : bool;
+}

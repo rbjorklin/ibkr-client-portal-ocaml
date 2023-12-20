@@ -1,0 +1,22 @@
+---
+name: Build
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build
+        shell: sh
+        run: make docker-build
+      - name: Coverage
+        shell: sh
+        run: make docker-coverage
+      # TODO: Add coverage badge
+      #- name: Coverage badge
+      #  uses: gaelgirodon/ci-badges-action@v1
+      #  with:
+      #    gist-id: 7bdce7fba7e8ae9ef89620b341cd549c
+      #    token: ${{ secrets.COVERAGE }}

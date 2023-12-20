@@ -1,0 +1,110 @@
+(library
+ (public_name ibkr_cp)
+ (instrumentation (backend bisect_ppx))
+ (libraries
+  atdgen-runtime
+  bigdecimal
+  cohttp-lwt-unix
+  conduit-lwt-unix
+  lwt
+  uri
+  websocket-lwt-unix
+  yojson)
+)
+
+(rule
+ (targets session_t.ml session_t.mli)
+ (deps session.atd)
+ (action
+  (run atdgen -t %{deps})))
+
+;https://github.com/ahrefs/atd/issues/368
+(rule
+ (targets session_j.ml session_j.mli)
+ (deps session.atd)
+ (action
+  (run atdgen -j -j-std %{deps})))
+
+(rule
+ (targets contract_t.ml contract_t.mli)
+ (deps contract.atd)
+ (action
+  (run atdgen -t %{deps})))
+
+(rule
+ (targets contract_j.ml contract_j.mli)
+ (deps contract.atd)
+ (action
+  (run atdgen -j -j-std %{deps})))
+
+(rule
+ (targets marketdata_t.ml marketdata_t.mli)
+ (deps marketdata.atd)
+ (action
+  (run atdgen -t %{deps})))
+
+(rule
+ (targets marketdata_j.ml marketdata_j.mli)
+ (deps marketdata.atd)
+ (action
+  (run atdgen -j -j-std %{deps})))
+
+(rule
+ (targets order_t.ml order_t.mli)
+ (deps order.atd)
+ (action
+  (run atdgen -t %{deps})))
+
+(rule
+ (targets order_j.ml order_j.mli)
+ (deps order.atd)
+ (action
+  (run atdgen -j -j-std %{deps})))
+
+(rule
+ (targets streaming_t.ml streaming_t.mli)
+ (deps streaming.atd)
+ (action
+  (run atdgen -t %{deps})))
+
+(rule
+ (targets streaming_j.ml streaming_j.mli)
+ (deps streaming.atd)
+ (action
+  (run atdgen -j -j-std %{deps})))
+
+(rule
+ (targets portfolio_t.ml portfolio_t.mli)
+ (deps portfolio.atd)
+ (action
+  (run atdgen -t %{deps})))
+
+(rule
+ (targets portfolio_j.ml portfolio_j.mli)
+ (deps portfolio.atd)
+ (action
+  (run atdgen -j -j-std %{deps})))
+
+(rule
+ (targets trades_t.ml trades_t.mli)
+ (deps trades.atd)
+ (action
+  (run atdgen -t %{deps})))
+
+(rule
+ (targets trades_j.ml trades_j.mli)
+ (deps trades.atd)
+ (action
+  (run atdgen -j -j-std %{deps})))
+
+(rule
+ (targets account_t.ml account_t.mli)
+ (deps account.atd)
+ (action
+  (run atdgen -t %{deps})))
+
+(rule
+ (targets account_j.ml account_j.mli)
+ (deps account.atd)
+ (action
+  (run atdgen -j -j-std %{deps})))

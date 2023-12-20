@@ -1,0 +1,191 @@
+(* smd *)
+type marketdata = {
+    conid : int;
+    conidEx : string;
+    server_id : string;
+    updated <json name="_updated"> : int;
+    topic : string;
+    ?last <json name="31"> : string option;
+    ?symbol <json name="55"> : string option;
+    ?bid <json name="84"> : string option;
+    ?ask <json name="86"> : string option;
+    ?security_type <json name="6070"> : string option;
+    ?delivery_method <doc text="Marker for market data delivery method, same as server_id?"> <json name="6119"> : string option; 
+    ?marketdata_availability <doc text="Marketdata availability. Realtime, Delayed, Frozen etc."> <json name="6509"> : string option;
+}
+
+(* system *)
+type heartbeat = {
+    topic : string;
+    hb : int;
+}
+
+(* system *)
+type connection_msg = {
+    topic : string;
+    success : string;
+}
+
+(* notification component that show up when placing orders outside_rth? *)
+type notification_query = {
+    account_id : string;
+    sec_type : string;
+    order_currency : string;
+    exchange : string;
+    conid : int;
+    order_total : float;
+}
+
+(* notification component that show up when placing orders outside_rth? *)
+type notification_cqe = {
+    query : notification_query;
+    request_method : string;
+}
+
+type notification_component = {
+    id : string;
+    text : string;
+    ?action : string option;
+    ?cqe : notification_cqe option;
+    ?title : string option;
+    ?url : string option;
+}
+
+type notification = {
+    topic : string;
+    args : notification_component list;
+}
+
+type order_component = {
+    acct : string;
+    orderId : int;
+    cashCcy : string;
+    sizeAndFills : string;
+    orderDesc : string;
+    ticker : string;
+    secType : string;
+    listingExchange : string;
+    remainingQuantity : float;
+    filledQuantity : float;
+    companyName : string;
+    status : string;
+    origOrderType : string;
+    supportsTaxOpt : int;
+    lastExecutionTime : int;
+    lastExecutionTime_r : int;
+    orderType : string;
+    side : string;
+    timeInForce : string;
+    price : float;
+}
+
+(* sor *)
+type order = {
+    topic : string;
+    args : order_component list;
+}
+
+type trade_component = {
+    execution_id : string;
+    symbol : string;
+    supports_tax_opt : string;
+    side : string;
+    order_description : string;
+    trade_time : string;
+    trade_time_r : int;
+    size : float;
+    price : string;
+    ?order_ref : string option;
+    exchange : string;
+    ?commission : string option;
+    net_amount : float;
+    account : string;
+    accountCode : string;
+    company_name : string;
+    contract_description_1 : string;
+    sec_type : string;
+    listing_exchange : string;
+    conid : int;
+    conidEx : string;
+    directed_exchange : string;
+    clearing_id : string;
+    clearing_name : string;
+    liquidation_trade : string;
+}
+
+(* str *)
+type trade = {
+    topic : string;
+    args : trade_component list;
+}
+
+type auth_status_args = {
+    authenticated : bool;
+    competing : bool;
+    message : string;
+    fail : string ;
+    serverName : string;
+    serverVersion : string;
+    username : string;
+}
+
+(* sts *)
+type auth_status = {
+    topic : string;
+    args : auth_status_args;
+}
+
+
+type tic_alive = {
+    topic : string;
+    alive : bool;
+    id : string;
+    lastAccessed : int;
+}
+<doc text="send 'tic' as per: https://interactivebrokers.github.io/cpwebapi/websockets#ping-session">
+
+type tic_expiry = {
+    ssoExpires : int;
+    collission : bool;
+    userId : int;
+    topic : string;
+}
+
+(** nested type, this will never be a message of its own *)
+type tic_error = { error : string }
+
+type tic_md = {
+    md : tic_error;
+    topic : string;
+}
+
+type tic_hmds = {
+    hmds : tic_error;
+    topic : string;
+}
+
+(** nested type, this will never be a message of its own *)
+type tic_server_info = {
+    serverName : string;
+    serverVersion : string;
+}
+
+(** nested type, this will never be a message of its own *)
+type tic_auth_status = {
+    authenticated : bool;
+    competing : bool;
+    connected : bool;
+    message : string;
+    mac <json name="MAC"> : string;
+    serverInfo : tic_server_info;
+}
+
+(** nested type, this will never be a message of its own *)
+type tic_iserver = {
+    authStatus : tic_auth_status;
+}
+
+type tic_status = {
+    iserver : tic_iserver;
+    topic : string;
+}

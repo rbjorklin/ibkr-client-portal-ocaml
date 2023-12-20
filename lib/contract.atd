@@ -1,0 +1,31 @@
+type details = {
+  symbol : string;
+  con_id : int;
+  ?industry : string option;
+  trading_class : string;
+  valid_exchanges : string;
+  instrument_type : string;
+  currency : string;
+  ?category : string option;
+}
+
+type search_section = {
+    secType : string;
+}
+
+type search_query = {
+    symbol : string;
+    ~name <ocaml default="false">: bool;
+    ~secType <ocaml default="\"STK\"">: string;
+}
+
+type search_result = {
+    conid : int; (* May be 'conid' or 'conidex' form which consists of a conid with an appended exchange identifier. I.E. 462119552@VALUE, "VALUE" is an internal marker used by IB for delisted securities *)
+    ~companyName : string;
+    ~symbol : string;
+    ~description : string;
+    ~restricted : string;
+    sections : search_section list
+}
+
+type search = search_result list

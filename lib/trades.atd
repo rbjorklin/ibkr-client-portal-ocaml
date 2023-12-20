@@ -1,0 +1,26 @@
+type trade = {
+    execution_id : string;
+    symbol : string;
+    side : string wrap <ocaml t="Trade_side.t" wrap="Trade_side.of_string" unwrap="Trade_side.to_string">;
+    order_description : string;
+    trade_time : string;
+    trade_time_r : int;
+    size : float;
+    price : string;
+    ?order_ref : string option;
+    exchange : string;
+    commission : string;
+    net_amount : float;
+    account : string;
+    accountCode : string;
+    company_name : string;
+    contract_description_1 : string;
+    sec_type : string;
+    conid : int;
+    conidEx : string;
+    clearing_id : string;
+    clearing_name : string;
+    liquidation_trade : string;
+}
+
+type trades = trade list

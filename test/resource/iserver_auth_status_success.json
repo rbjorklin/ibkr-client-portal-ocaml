@@ -1,0 +1,12 @@
+{
+  "authenticated": true,
+  "competing": false,
+  "connected": true,
+  "message": "",
+  "MAC": "98:F2:B3:23:BF:A0",
+  "serverInfo": {
+    "serverName": "JisfN9032",
+    "serverVersion": "Build 10.25.0a, Aug 29, 2023 4:29:57 PM"
+  },
+  "fail": ""
+}

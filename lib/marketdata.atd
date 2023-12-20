@@ -1,0 +1,20 @@
+type bar = {
+  o : float;
+  c : float;
+  h : float;
+  l : float;
+  v : float;
+  t : int;
+}
+
+type history = {
+    symbol : string;
+    priceFactor : int;
+    barLength : int;
+    data : bar list;
+    ?points : int option;
+}
+
+type error = {
+  error : string;
+}

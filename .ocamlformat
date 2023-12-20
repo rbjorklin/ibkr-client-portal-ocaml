@@ -1,0 +1,14 @@
+break-separators=after
+break-colon=after
+
+break-cases=fit-or-vertical
+break-fun-decl=fit-or-vertical
+break-fun-sig=fit-or-vertical
+break-infix=fit-or-vertical
+if-then-else=vertical
+
+let-and=sparse
+let-module=sparse
+module-item-spacing=sparse
+single-case=sparse
+type-decl=sparse

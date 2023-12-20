@@ -1,0 +1,4 @@
+(tests
+ (names account order session trades)
+ (package ibkr_cp)
+ (libraries alcotest ibkr_cp))

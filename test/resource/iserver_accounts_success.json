@@ -1,0 +1,99 @@
+{
+  "accounts": [
+    "DU9999999"
+  ],
+  "acctProps": {
+    "DU9999999": {
+      "hasChildAccounts": false,
+      "supportsCashQty": true,
+      "noFXConv": false,
+      "isProp": false,
+      "supportsFractions": false,
+      "allowCustomerTime": false
+    }
+  },
+  "aliases": {
+    "DU9999999": "DU9999999"
+  },
+  "allowFeatures": {
+    "showGFIS": true,
+    "showEUCostReport": false,
+    "allowFXConv": true,
+    "allowFinancialLens": true,
+    "allowMTA": true,
+    "allowTypeAhead": true,
+    "allowEventTrading": true,
+    "snapshotRefreshTimeout": 30,
+    "liteUser": false,
+    "showWebNews": true,
+    "research": true,
+    "debugPnl": true,
+    "showTaxOpt": true,
+    "showImpactDashboard": true,
+    "allowDynAccount": false,
+    "allowCrypto": false,
+    "allowedAssetTypes": "STK,CFD,OPT,FOP,WAR,FUT,BAG,PDC,CASH,IND,BOND,BILL,FUND,SLB,News,CMDTY,IOPT,ICU,ICS,PHYSS,CRYPTO"
+  },
+  "chartPeriods": {
+    "STK": [
+      "*"
+    ],
+    "CFD": [
+      "*"
+    ],
+    "OPT": [
+      "2h",
+      "1d",
+      "2d",
+      "1w",
+      "1m"
+    ],
+    "FOP": [
+      "2h",
+      "1d",
+      "2d",
+      "1w",
+      "1m"
+    ],
+    "WAR": [
+      "*"
+    ],
+    "IOPT": [
+      "*"
+    ],
+    "FUT": [
+      "*"
+    ],
+    "CASH": [
+      "*"
+    ],
+    "IND": [
+      "*"
+    ],
+    "BOND": [
+      "*"
+    ],
+    "FUND": [
+      "*"
+    ],
+    "CMDTY": [
+      "*"
+    ],
+    "PHYSS": [
+      "*"
+    ],
+    "CRYPTO": [
+      "*"
+    ]
+  },
+  "groups": [],
+  "profiles": [],
+  "selectedAccount": "DU9999999",
+  "serverInfo": {
+    "serverName": "JisfN9032",
+    "serverVersion": "Build 10.25.0a, Aug 29, 2023 4:29:57 PM"
+  },
+  "sessionId": "64fd4c50.00000004",
+  "isFT": false,
+  "isPaper": true
+}

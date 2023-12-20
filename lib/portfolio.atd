@@ -1,0 +1,52 @@
+type position = {
+    acctId : string;
+    conid : int;
+    contractDesc <doc text="referred to as {{symbol}} in other responses"> : string;
+    position <doc text="referred to as {{size}} in other responses"> : float;
+    mktPrice : float; (* the currently traded price *)
+    avgCost : float; (* how is 'avgCost' and 'avgPrice' different? *)
+    avgPrice : float; (* how is 'avgCost' and 'avgPrice' different? *)
+    assetClass : string wrap <ocaml t="Portfolio_asset_class.t" wrap="Portfolio_asset_class.of_string" unwrap="Portfolio_asset_class.to_string">;
+}
+
+type positions = position list
+
+type parent = {
+    mmc : string list;
+    accountId : string;
+    isMParent : bool;
+    isMChild : bool;
+    isMultiplex : bool;
+}
+
+type account = {
+  id : string;
+  accountId : string;
+  accountVan : string;
+  accountTitle : string;
+  displayName : string;
+  ?accountAlias : string option;
+  accountStatus : int;
+  currency : string;
+  accountType <json name="type"> : string;
+  tradingType : string;
+  ibEntity : string;
+  faclient : bool;
+  clearingStatus : string;
+  covestor : bool;
+  parent : parent;
+  desc : string;
+}
+
+type accounts = account list
+
+type account_summary_detail = {
+   amount : float;
+   ?currency : string option;
+   isNull : bool;
+   timestamp : int;
+   ?value : string option;
+   severity : int;
+}
+
+type account_summary = (string * account_summary_detail) list <json repr="object">

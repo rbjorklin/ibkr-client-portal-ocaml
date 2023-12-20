@@ -1,0 +1,131 @@
+type order = {
+    acctId : string;
+    conidex : string;
+    cOID : string;
+    orderType : string wrap <ocaml t="Order_type.t" wrap="Order_type.of_string" unwrap="Order_type.to_string">;
+    listingExchange : string;
+    outsideRTH : bool;
+    ?price : float wrap <ocaml t="Bigdecimal.t" wrap="Bigdecimal.of_float_short_exn" unwrap="fun n -> Bigdecimal.round_to_power_of_ten ~power_of_ten:(-2) n |> Bigdecimal.to_float"> option;
+    side : string wrap <ocaml t="Order_side.t" wrap="Order_side.of_string" unwrap="Order_side.to_string">;
+    ticker : string;
+    tif : string wrap <ocaml t="Order_tif.t" wrap="Order_tif.of_string" unwrap="Order_tif.to_string">;
+    ?trailingAmt : float option;
+    ?trailingType : string option;
+    quantity : int;
+    useAdaptive : bool;
+}
+
+type orders = {
+    orders : order list
+}
+
+type live_order = {
+    acct : string;
+    conidex : string;
+    conid : int;
+    orderId : int;
+    cashCcy : string;
+    sizeAndFills : string;
+    orderDesc : string;
+    description1 : string;
+    ticker : string;
+    secType : string;
+    listingExchange : string;
+    remainingQuantity : float;
+    filledQuantity : float;
+    companyName : string;
+    status : string;
+    origOrderType : string;
+    supportsTaxOpt : string;
+    lastExecutionTime : string;
+    orderType : string wrap <ocaml t="Live_order_type.t" wrap="Live_order_type.of_string" unwrap="Live_order_type.to_string">;
+    ?order_ref : string option;
+    ?order_cancellation_by_system_reason : string option;
+    timeInForce : string;
+    lastExecutionTime_r : int;
+    side : string wrap <ocaml t="Order_side.t" wrap="Order_side.of_string" unwrap="Order_side.to_string">;
+}
+
+type live_orders = {
+    live_orders <json name="orders"> : live_order list
+}
+
+type err = {
+    error : string;
+}
+
+type place_orders_response = {
+    id : string;
+    message : string list;
+    isSuppressed : bool;
+    messageIds : string list;
+}
+
+type place_orders_responses = place_orders_response list
+
+type place_order_reply = {
+    confirmed : bool;
+}
+
+type place_order_reply_response = {
+    order_id : string;
+    order_status : string;
+    ?local_order_id : string option;
+    ?encrypt_message : string option;
+    ?warning_message : string option;
+    ?text : string option;
+}
+
+type place_order_reply_responses = place_order_reply_response list
+
+type cancel_order = {
+    order_id : string;
+    msg : string;
+    conid : int;
+    account : string;
+}
+
+type order_status = {
+  sub_type : string option;
+  request_id : string;
+  order_id : int;
+  conidex : string;
+  conid : int;
+  symbol : string;
+  side : string wrap <ocaml t="Order_side.t" wrap="Order_side.of_string" unwrap="Order_side.to_string">;
+  contract_description_1 : string;
+  listing_exchange : string;
+  option_acct : string;
+  company_name : string;
+  size : string;
+  total_size : string;
+  currency : string;
+  account : string;
+  order_type : string;
+  limit_price : string;
+  cum_fill : string;
+  order_status : string;
+  order_status_description : string;
+  tif : string wrap <ocaml t="Order_tif.t" wrap="Order_tif.of_string" unwrap="Order_tif.to_string">;
+  fg_color : string;
+  bg_color : string;
+  order_not_editable : bool;
+  editable_fields : string;
+  cannot_cancel_order : bool;
+  outside_rth : bool;
+  deactivate_order : bool;
+  use_price_mgmt_algo : bool;
+  sec_type : string;
+  available_chart_periods : string;
+  order_description : string;
+  order_description_with_contract : string;
+  alert_active : int;
+  child_order_type : string;
+  order_clearing_account : string;
+  size_and_fills : string;
+  exit_strategy_display_price : string;
+  exit_strategy_chart_description : string;
+  exit_strategy_tool_availability : string;
+  allowed_duplicate_opposite : bool;
+  order_time : string
+}
