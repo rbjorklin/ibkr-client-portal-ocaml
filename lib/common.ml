@@ -24,10 +24,10 @@ let call
     ~parser
     uri =
   let () =
-    if skip_verify then
-      (* Skip certificate verification *)
+    if skip_verify then (* Skip certificate verification *)
       Ssl.set_verify Conduit_lwt_unix_ssl.Client.default_ctx [] None
-    else ()
+    else
+      ()
   in
   let match_timeout = function
     | `Timeout time ->
@@ -57,8 +57,8 @@ let call
   Log.debug (fun m -> m "%s" (msg ()));
   match response.status with
   | `OK -> (
-      try Ok (parser rsp_body_s)
-      with e -> Error (Printf.sprintf "call: %s" (Printexc.to_string e)))
+      try Ok (parser rsp_body_s) with
+      | e -> Error (Printf.sprintf "call: %s" (Printexc.to_string e)))
   | #Cohttp.Code.status_code -> Error (Printf.sprintf "%s: %s" caller (msg ()))
 
 let make_ws_client ?(skip_verify = false) uri =
@@ -66,9 +66,9 @@ let make_ws_client ?(skip_verify = false) uri =
   Conduit_lwt_unix.(
     endp_to_client ~ctx:(Lazy.force default_ctx) endp >>= fun client ->
     let () =
-      if skip_verify then
-        (* Skip certificate verification *)
+      if skip_verify then (* Skip certificate verification *)
         Ssl.set_verify Conduit_lwt_unix_ssl.Client.default_ctx [] None
-      else ()
+      else
+        ()
     in
     Websocket_lwt_unix.connect ~ctx:(Lazy.force default_ctx) client uri)

@@ -51,9 +51,20 @@ let endpoint_to_uri ~base_url = function
       Uri.of_string
         (base_url ^ Printf.sprintf "/iserver/account/order/status/%s" order_id)
 
-let create_order ?(outside_rth = false) ?(use_adaptive = false)
-    ?(listingExchange = "SMART") ?(price = None) ~client ~cOID ~conid
-    ~order_type ~quantity ~side ~tif ~ticker () =
+let create_order
+    ?(outside_rth = false)
+    ?(use_adaptive = false)
+    ?(listingExchange = "SMART")
+    ?(price = None)
+    ~client
+    ~cOID
+    ~conid
+    ~order_type
+    ~quantity
+    ~side
+    ~tif
+    ~ticker
+    () =
   Order_t.
     {
       acctId = client.account_id;
@@ -85,7 +96,9 @@ let place_order_reply ?(timeout = 3.) ~client ~(reply : bool) id =
   Common.call ~caller:"place_order_reply" ~timeout ~meth:`POST ~headers ~body
     ~parser:Order_j.place_order_reply_responses_of_string uri
 
-let create_orders = function [] -> None | orders -> Some { Order_j.orders }
+let create_orders = function
+  | [] -> None
+  | orders -> Some { Order_j.orders }
 
 let place_orders ?(timeout = 3.) ~client (orders : Order_j.orders) =
   let account_id = client.account_id in
