@@ -138,3 +138,11 @@ let order_status ?(timeout = 3.) ~client order_id =
   let uri = endpoint_to_uri ~base_url:client.base_url (Order_status order_id) in
   Common.call ~caller:"order_status" ~timeout
     ~parser:Order_j.order_status_of_string uri
+
+(* let order_status2
+     ?(timeout = 3.)
+     ~(client : Account_t.accounts Types2.ctx2)
+     order_id =
+   let uri = endpoint_to_uri ~base_url:client.base_url (Order_status order_id) in
+   client.call ~caller:"order_status" ~timeout
+     ~parser:Order_j.order_status_of_string uri *)
