@@ -4,7 +4,7 @@ synopsis: "Thin wrapper for IBKR Client Portal API"
 description: "Thin wrapper for IBKR Client Portal API"
 maintainer: ["Robin Björklin"]
 authors: ["Robin Björklin"]
-license: ["Apache-2.0" "WITH" "LLVM-exception"]
+license: "Apache-2.0 WITH LLVM-exception"
 tags: ["interactive" "brokers" "client" "portal"]
 homepage: "https://github.com/rbjorklin/ibkr-client-portal-ocaml"
 doc: "https://rbjorklin.github.io/ibkr-client-portal-ocaml/"

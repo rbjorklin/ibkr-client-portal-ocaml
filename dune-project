@@ -11,7 +11,7 @@
 
 (maintainers "Robin Björklin")
 
-(license Apache-2.0 WITH LLVM-exception)
+(license "Apache-2.0 WITH LLVM-exception")
 
 (documentation https://rbjorklin.github.io/ibkr-client-portal-ocaml/)
 
