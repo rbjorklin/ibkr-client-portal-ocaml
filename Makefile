@@ -30,5 +30,9 @@ build:
 test:
 	opam exec -- dune runtest
 
+local-install:
+	opam exec -- dune build @install
+	opam install .
+
 docker-%:
 	$(DOCKER) run --rm -ti --volume $(PWD):/build$(SELINUX) --workdir /build $(COMPILER_IMAGE):$(COMPILER_IMAGE_TAG) make $* PROFILE=$(PROFILE)
